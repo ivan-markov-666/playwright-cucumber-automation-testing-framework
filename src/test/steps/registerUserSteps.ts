@@ -8,7 +8,7 @@ let registerPage: RegisterPage;
 let assert: Assert;
 
 Given('I navigate to the register page', async function () {
-  registerPage = new RegisterPage(fixture.page);
+  registerPage = new RegisterPage(fixture.page, fixture.context);
   assert = new Assert(fixture.page);
   await registerPage.navigateToRegisterPage();
 });

@@ -9,7 +9,7 @@ const currentAddress = 'Test';
 const permanentAddress = 'Test';
 
 Given('Navigate to text-box page', async function () {
-  pom = new TextBoxPage(fixture.page);
+  pom = new TextBoxPage(fixture.page, fixture.context);
   await pom.navigateToForm();
   fixture.logger.info('EDIT IT! Message from the logger.');
 });
