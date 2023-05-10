@@ -2,7 +2,7 @@ Feature: Text Box
 
     Background: Navigate to the page
         Given Navigate to text-box page
-
+    @test
     Scenario: Fill the text box form
         When Fill the Full Name field
         When Fill the Email field

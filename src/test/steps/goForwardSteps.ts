@@ -13,7 +13,7 @@ let pom: goForwardSteps;
 // Define the step definitions.
 defineStep('Go forward', async function () {
   // Initialize the page object.
-  pom = new goForwardSteps(fixture.page);
+  pom = new goForwardSteps(fixture.page, fixture.context);
   // Change the screen size.
   await pom.goForward();
   // Log the message.

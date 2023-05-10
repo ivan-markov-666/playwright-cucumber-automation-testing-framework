@@ -12,7 +12,7 @@ let pom: clickAndOpenNewWindowPage;
 
 defineStep('Navigate to the browser-windows page', async function () {
   // Initialize the page object.
-  pom = new clickAndOpenNewWindowPage(fixture.page);
+  pom = new clickAndOpenNewWindowPage(fixture.page, fixture.context);
   // Navigate to the url.
   await pom.navigateTo();
   // Log the message.

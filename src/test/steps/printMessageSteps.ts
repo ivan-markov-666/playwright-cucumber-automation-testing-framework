@@ -13,7 +13,7 @@ let pom: printMessagePage;
 // Define the step definitions.
 defineStep('Print message for testing', async function () {
   // Initialize the page object.
-  pom = new printMessagePage(fixture.page);
+  pom = new printMessagePage(fixture.page, fixture.context);
   // Change the screen size.
   await pom.printSuccessMessage();
   // Log the message.
