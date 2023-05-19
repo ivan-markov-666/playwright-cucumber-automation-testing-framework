@@ -12,6 +12,10 @@ export default class GetAllTexts extends BasePage {
     // Go to the page.
     await this.base.navigateTo(`https://demoqa.com/text-box`);
     // Get all the texts of the element.
-    await this.base.getAllTexts(`#userName-label`, 0, `Full Name`);
+    await this.base.getAllTexts(
+      `(//*[@*='texToolTopContainer']/a)[1]`,
+      1,
+      `Contrary`,
+    );
   }
 }

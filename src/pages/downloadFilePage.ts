@@ -12,6 +12,6 @@ export default class DownloadFile extends BasePage {
     // Go to the page.
     await this.base.navigateTo(`https://demoqa.com/upload-download`);
     // Check the checkbox.
-    await this.base.downloadFile(`downloadButton`);
+    await this.base.downloadFile(`#downloadButton`);
   }
 }

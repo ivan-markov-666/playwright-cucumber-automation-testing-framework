@@ -9,9 +9,9 @@ import BasePage from './basePage';
 export default class ClickWithHoldingKeyboardKey extends BasePage {
   // Define the constructor for the wrapper class.
   async clickWithHoldingKeyboardKey() {
-    // // Go to the page.
-    // await this.base.navigateTo(`https://demoqa.com/automation-practice-form`);
-    // // Check the checkbox.
-    // await this.base.checkRadioButtonCheckBox(`#hobbies-checkbox-1`, `check`);
+    // Go to the page.
+    await this.base.navigateTo(`https://demoqa.com/browser-windows`);
+    // Check the checkbox.
+    await this.base.clickWithHoldingKeyboardKey(`#windowButton`, `Control`);
   }
 }

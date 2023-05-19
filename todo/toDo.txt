@@ -3,3 +3,4 @@ We need to add tests examples for screen size.
 We need to fix the "clickAndOpenNewTab" dls method.
 Need to test if the "clickWithHoldingKeyboardKey" dsl method is working as expected.
 Need to fix the "downloadFile" dsl method.
+Need to check if the "clickWithHoldingKeyboardKey" dsl method is acutally working!

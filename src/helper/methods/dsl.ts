@@ -4,7 +4,7 @@
  */
 
 // Import required packages.
-import { Page, BrowserContext, expect } from '@playwright/test';
+import { Page, BrowserContext, expect, ElementHandle } from '@playwright/test';
 import Assert from './assert';
 import {
   catchErrorMessage,
@@ -195,6 +195,45 @@ export default class Dsl {
     }
   }
 
+  async isElementFocusable(element: ElementHandle<HTMLElement>) {
+    try {
+      const focusableTags = ['input', 'textarea', 'select', 'button', 'a'];
+      const isContentEditable = await element.evaluate(
+        (el) => el.isContentEditable,
+      );
+
+      if (isContentEditable) {
+        messages(`The element is focusable.`);
+        return true;
+      }
+
+      const tagName = await element.evaluate((el) => el.tagName.toLowerCase());
+      if (focusableTags.includes(tagName)) {
+        messages(`The element is focusable.`);
+        return true;
+      }
+
+      const tabIndexAttr = await element.getAttribute('tabindex');
+      if (tabIndexAttr && parseInt(tabIndexAttr, 10) >= 0) {
+        messages(`The element is focusable.`);
+        return true;
+      }
+
+      const hasHrefAttr = await element.getAttribute('href');
+      if (tagName === 'a' && hasHrefAttr) {
+        messages(`The element is focusable.`);
+        return true;
+      }
+      messages(`The element is not focusable.`);
+      return false;
+    } catch (error) {
+      // Catch the error message.
+
+      // eslint-disable-next-line prettier/prettier
+      catchErrorMessage('isElementFocusable', 'dsl.ts', error);
+    }
+  }
+
   /**
    * @description               This method is used to select an element.
    *                            It can be used to select an element by locator or by element.
@@ -266,18 +305,23 @@ export default class Dsl {
       }
 
       // Validate that the element is focused.
-      try {
-        // Focus on the element.
-        await element.focus();
-        // Verify that the element is focused.
-        await expect(element).toBeFocused();
-      } catch (error) {
-        // Catch the error message.
-        catchErrorMessage(
-          `dsl`,
-          `element`,
-          `The element is not focused. \n ${error}`,
-        );
+      if (element) {
+        const isFocusable = await this.isElementFocusable(element);
+        if (isFocusable == true) {
+          try {
+            // Focus on the element.
+            await element.focus();
+            // Verify that the element is focused.
+            await expect(element).toBeFocused();
+          } catch (error) {
+            // Catch the error message.
+            catchErrorMessage(
+              `dsl`,
+              `element`,
+              `The element is not focused. \n ${error}`,
+            );
+          }
+        }
       }
 
       // Validate that the element is not hidden.
@@ -934,6 +978,11 @@ export default class Dsl {
    * @param keyboardKey    Provide the keyboard key/s that will be used to click.
    * @usage                await dsl.clickWithHoldingKeyboardKey({string}, {string});
    * @example              await dsl.clickWithHoldingKeyboardKey('input', 'Alt');
+   * @example              await dsl.clickWithHoldingKeyboardKey('input', 'Control');
+   * @example              await dsl.clickWithHoldingKeyboardKey('input', 'Meta');
+   * @example              await dsl.clickWithHoldingKeyboardKey('input', 'Shift');
+   * @example              await dsl.clickWithHoldingKeyboardKey('input', 'Alt+Control');
+   * @example              etc...
    */
   async clickWithHoldingKeyboardKey(
     locator: string,
@@ -982,34 +1031,32 @@ export default class Dsl {
         this.page.locator(locator).click(),
       ]);
       // Wait for the download process to complete.
+      let filePath: string;
       if (downloadFolderPathWithFileNameAndExtension != null) {
         // Save downloaded file in specific path direcotry.
         await download.saveAs(downloadFolderPathWithFileNameAndExtension);
-      } else if (downloadFolderPathWithFileNameAndExtension == null) {
-        // Save downloaded files automatically. Alert the downloaded file will download with a random name, with no extension, and it will be deleted when the automation is stopped.
-        await download.path();
+        filePath = downloadFolderPathWithFileNameAndExtension;
       } else {
-        catchErrorMessage(
-          'downloadFile',
-          'dsl.ts',
-          `This error should never happen!`,
-        );
+        // Save downloaded files automatically. Alert the downloaded file will download with a random name, with no extension, and it will be deleted when the automation is stopped.
+        filePath = await download.path();
       }
 
       // Add the information message.
       if (downloadFolderPathWithFileNameAndExtension != null) {
         // Log the message.
-        messages(`The automated test downloads a file.`);
+        messages(
+          `The automated test downloads a file. File saved at: ${filePath}`,
+        );
+        messages(`The file will be removed when the automation test ends.`);
       } else {
         // Log the message.
         messages(
-          `The automated test downloads a file in the: '${downloadFolderPathWithFileNameAndExtension}'.`,
+          `The automated test downloads a file. File saved at: ${filePath}`,
         );
+        messages(`The file will be removed when the automation test ends.`);
       }
     } catch (error) {
       // Catch the error message.
-
-      // eslint-disable-next-line prettier/prettier
       catchErrorMessage('downloadFile', 'dsl.ts', error);
     }
   }

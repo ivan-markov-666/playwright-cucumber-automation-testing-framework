@@ -12,6 +12,6 @@ export default class AlertAccept extends BasePage {
     // Go to the page.
     await this.base.navigateTo(`https://demoqa.com/alerts`);
     // Check the checkbox.
-    await this.base.alertAccept(`#alertButton`, `You clicked a button`);
+    await this.base.alertAccept(`#confirmButton`, `Do you confirm action?`);
   }
 }

@@ -12,6 +12,6 @@ export default class AlertCancel extends BasePage {
     // Go to the page.
     await this.base.navigateTo(`https://demoqa.com/alerts`);
     // Check the checkbox.
-    await this.base.alertCancel(`alertButton`, `You canceled the alert`);
+    await this.base.alertCancel(`#confirmButton`, `Do you confirm action?`);
   }
 }

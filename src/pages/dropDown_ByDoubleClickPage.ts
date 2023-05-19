@@ -14,7 +14,7 @@ export default class DropDown_ByDoubleClick extends BasePage {
     // Check the checkbox.
     await this.base.dropDown_ByDoubleClick(
       `#withOptGroup`,
-      `#react-select-8-option-0-1`,
+      `#react-select-2-option-0-0`,
     );
   }
 }
