@@ -6,12 +6,12 @@
 import BasePage from './basePage';
 
 // Define the wrapper class for playwright methods.
-export default class ClickAndOpenNewWindow extends BasePage {
+export default class GetInnerText extends BasePage {
   // Define the constructor for the wrapper class.
-  async clickAndOpenNewWindow() {
+  async getInnerText() {
     // Go to the page.
-    await this.base.navigateTo(`https://demoqa.com/browser-windows`);
-    // Check the checkbox.
-    await this.base.clickAndOpenNewTab(`#tabButton`, `#sampleHeading`);
+    await this.base.navigateTo(`https://demoqa.com/text-box`);
+    // Get the element inner text.
+    await this.base.getInnerText(`#userName-label`, `Full Name`);
   }
 }

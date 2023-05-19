@@ -1,10 +1,10 @@
-import { expect, Page } from '@playwright/test';
+import { expect, Page, BrowserContext } from '@playwright/test';
 import HeaderPage from './headerPage';
 
 export default class BooksPage {
   private header: HeaderPage;
-  constructor(private page: Page) {
-    this.header = new HeaderPage(page);
+  constructor(private page: Page, protected context: BrowserContext) {
+    this.header = new HeaderPage(page, context);
   }
 
   private Elements = {

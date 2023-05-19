@@ -6,12 +6,15 @@
 import BasePage from './basePage';
 
 // Define the wrapper class for playwright methods.
-export default class ClickAndOpenNewWindow extends BasePage {
+export default class DropDown_ByDoubleClick extends BasePage {
   // Define the constructor for the wrapper class.
-  async clickAndOpenNewWindow() {
+  async dropDown_ByDoubleClick() {
     // Go to the page.
-    await this.base.navigateTo(`https://demoqa.com/browser-windows`);
+    await this.base.navigateTo(`https://demoqa.com/select-menu`);
     // Check the checkbox.
-    await this.base.clickAndOpenNewTab(`#tabButton`, `#sampleHeading`);
+    await this.base.dropDown_ByDoubleClick(
+      `#withOptGroup`,
+      `#react-select-8-option-0-1`,
+    );
   }
 }

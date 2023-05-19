@@ -6,12 +6,16 @@
 import BasePage from './basePage';
 
 // Define the wrapper class for playwright methods.
-export default class ClickAndOpenNewWindow extends BasePage {
+export default class AlertTypeValueAndAccept extends BasePage {
   // Define the constructor for the wrapper class.
-  async clickAndOpenNewWindow() {
+  async alertTypeValueAndAccept() {
     // Go to the page.
-    await this.base.navigateTo(`https://demoqa.com/browser-windows`);
+    await this.base.navigateTo(`https://demoqa.com/alerts`);
     // Check the checkbox.
-    await this.base.clickAndOpenNewTab(`#tabButton`, `#sampleHeading`);
+    await this.base.alertTypeValueAndAccept(
+      `#promtButton`,
+      `John Doe`,
+      `Please enter your name`,
+    );
   }
 }

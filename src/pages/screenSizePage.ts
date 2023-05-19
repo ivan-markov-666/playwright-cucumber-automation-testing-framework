@@ -6,7 +6,7 @@
 import BasePage from './basePage';
 
 // Define the wrapper class for playwright methods.
-export default class screenSizePage extends BasePage {
+export default class ScreenSizePage extends BasePage {
   // Define the constructor for the wrapper class.
   async fullHD() {
     // Change the screen size.

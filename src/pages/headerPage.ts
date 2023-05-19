@@ -1,10 +1,10 @@
-import { expect, Page } from '@playwright/test';
+import { expect, Page, BrowserContext } from '@playwright/test';
 import Pom from '../helper/methods/dsl';
 
 export default class HeaderPage {
   private base: Pom;
-  constructor(private page: Page) {
-    this.base = new Pom(page);
+  constructor(private page: Page, private context: BrowserContext) {
+    this.base = new Pom(page, context);
   }
 
   private headerPageElements = {
