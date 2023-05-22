@@ -1,7 +1,7 @@
 import { defineStep } from '@cucumber/cucumber';
 import fetch from 'node-fetch'; // You need to install this package with npm install node-fetch
-import { fixture } from '../../../hooks/pageFixture';
-import { getUnixTime } from '../../../helper/methods/other';
+import { fixture } from '../../hooks/pageFixture';
+import { getUnixTime } from '../../helper/methods/other';
 
 defineStep(`POST example`, async function () {
   const unixTime = getUnixTime();

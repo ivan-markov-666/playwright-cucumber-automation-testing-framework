@@ -5,6 +5,6 @@ let pom: DropDown_ByDoubleClick;
 
 defineStep(`Test the dropDown_ByDoubleClick dsl method`, async function () {
   pom = new DropDown_ByDoubleClick(fixture.page, fixture.context);
-  pom.dropDown_ByDoubleClick();
+  await pom.dropDown_ByDoubleClick();
   fixture.logger.info('Test the dropDown_ByDoubleClick dsl method');
 });

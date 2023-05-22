@@ -5,6 +5,6 @@ let pom: GetInnerText;
 
 defineStep(`Test the getInnerText dsl method`, async function () {
   pom = new GetInnerText(fixture.page, fixture.context);
-  pom.getInnerText();
+  await pom.getInnerText();
   fixture.logger.info('Test the getInnerText dsl method');
 });

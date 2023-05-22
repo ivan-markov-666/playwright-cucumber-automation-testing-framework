@@ -5,6 +5,6 @@ let pom: Element;
 
 defineStep(`Test the element dsl method`, async function () {
   pom = new Element(fixture.page, fixture.context);
-  pom.element();
+  await pom.element();
   fixture.logger.info('Test the element dsl method');
 });

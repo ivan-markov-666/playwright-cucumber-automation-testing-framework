@@ -12,6 +12,6 @@ export default class Hover extends BasePage {
     // Go to the page.
     await this.base.navigateTo(`https://demoqa.com/tool-tips`);
     // Check the checkbox.
-    await this.base.hover(`toolTipButton`);
+    await this.base.hover(`#toolTipButton`);
   }
 }

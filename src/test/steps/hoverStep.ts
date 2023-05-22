@@ -5,6 +5,6 @@ let pom: Hover;
 
 defineStep(`Test the hover dsl method`, async function () {
   pom = new Hover(fixture.page, fixture.context);
-  pom.hover();
+  await pom.hover();
   fixture.logger.info('Test the hover dsl method');
 });

@@ -5,6 +5,6 @@ let pom: ClickAndOpenNewWindow;
 
 defineStep(`Test the clickAndOpenNewWindow dsl method`, async function () {
   pom = new ClickAndOpenNewWindow(fixture.page, fixture.context);
-  pom.clickAndOpenNewWindow();
+  await pom.clickAndOpenNewWindow();
   fixture.logger.info('Test the clickAndOpenNewWindow dsl method');
 });

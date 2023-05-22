@@ -5,6 +5,6 @@ let pom: AlertCancel;
 
 defineStep(`Test the alertCancel dsl method`, async function () {
   pom = new AlertCancel(fixture.page, fixture.context);
-  pom.alertCancel();
+  await pom.alertCancel();
   fixture.logger.info('Test the alertCancel dsl method');
 });

@@ -5,6 +5,6 @@ let pom: UnCheckBox;
 
 defineStep(`Test the unCheckBox dsl method`, async function () {
   pom = new UnCheckBox(fixture.page, fixture.context);
-  pom.unCheckBox();
+  await pom.unCheckBox();
   fixture.logger.info('Test the unCheckBox dsl method');
 });

@@ -7,7 +7,7 @@ defineStep(
   `Test the openNewBrowserWindowAfterClick dsl method`,
   async function () {
     pom = new OpenNewBrowserWindowAfterClick(fixture.page, fixture.context);
-    pom.openNewBrowserWindowAfterClick();
+    await pom.openNewBrowserWindowAfterClick();
     fixture.logger.info('Test the openNewBrowserWindowAfterClick dsl method');
   },
 );

@@ -5,6 +5,6 @@ let pom: GetText;
 
 defineStep(`Test the getText dsl method`, async function () {
   pom = new GetText(fixture.page, fixture.context);
-  pom.getText();
+  await pom.getText();
   fixture.logger.info('Test the getText dsl method');
 });

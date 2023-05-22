@@ -12,9 +12,9 @@ export default class GoBack extends BasePage {
     // Go to the page.
     await this.base.navigateTo(`https://demoqa.com/text-box`);
     // Click on the element.
-    await this.base.click(`#item-1`);
+    await this.base.click(`(//*[@*='item-2'])[1]`);
     // Verify the element is present.
-    await this.base.element(`//*[@class='rct-title']`);
+    await this.base.element(`#yesRadio`);
     // Go back to the previous page.
     await this.base.goBack(`https://demoqa.com/text-box`);
   }

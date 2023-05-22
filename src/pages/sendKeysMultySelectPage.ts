@@ -13,7 +13,7 @@ export default class SendKeysMultySelect extends BasePage {
     await this.base.navigateTo(`https://demoqa.com/automation-practice-form`);
     // Get the element inner text.
     await this.base.sendKeysMultySelect(
-      `#subjectsContainer`,
+      `#subjectsInput`,
       `Maths`,
       `#react-select-2-option-0`,
     );

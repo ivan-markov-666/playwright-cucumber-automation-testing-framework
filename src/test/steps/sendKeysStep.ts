@@ -5,6 +5,6 @@ let pom: SendKeys;
 
 defineStep(`Test the sendKeys dsl method`, async function () {
   pom = new SendKeys(fixture.page, fixture.context);
-  pom.sendKeys();
+  await pom.sendKeys();
   fixture.logger.info('Test the sendKeys dsl method');
 });

@@ -12,9 +12,6 @@ export default class IFrameNested extends BasePage {
     // Go to the page.
     await this.base.navigateTo(`https://demoqa.com/buttons`);
     // Check the checkbox.
-    await this.base.iFrameNested(
-      `#rightClickBtn`,
-      `You have done a right click`,
-    );
+    await this.base.iFrameNested(`#rightClickBtn`);
   }
 }

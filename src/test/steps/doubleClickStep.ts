@@ -5,6 +5,6 @@ let pom: DoubleClick;
 
 defineStep(`Test the doubleClick dsl method`, async function () {
   pom = new DoubleClick(fixture.page, fixture.context);
-  pom.doubleClick();
+  await pom.doubleClick();
   fixture.logger.info('Test the doubleClick dsl method');
 });

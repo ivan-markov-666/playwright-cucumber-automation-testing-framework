@@ -5,6 +5,6 @@ let pom: SendKeysMultySelect;
 
 defineStep(`Test the sendKeysMultySelect dsl method`, async function () {
   pom = new SendKeysMultySelect(fixture.page, fixture.context);
-  pom.sendKeysMultySelect();
+  await pom.sendKeysMultySelect();
   fixture.logger.info('Test the sendKeysMultySelect dsl method');
 });

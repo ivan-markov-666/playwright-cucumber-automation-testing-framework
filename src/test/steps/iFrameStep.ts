@@ -5,6 +5,6 @@ let pom: IFrame;
 
 defineStep(`Test the iFrame dsl method`, async function () {
   pom = new IFrame(fixture.page, fixture.context);
-  pom.iFrame();
+  await pom.iFrame();
   fixture.logger.info('Test the iFrame dsl method');
 });

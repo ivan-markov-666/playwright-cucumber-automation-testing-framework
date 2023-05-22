@@ -5,6 +5,6 @@ let pom: Pom;
 
 defineStep(`Test the realExampleFE`, async function () {
   pom = new Pom(fixture.page, fixture.context);
-  pom.realExampleFE();
+  await pom.realExampleFE();
   fixture.logger.info('Test the realExampleFE');
 });

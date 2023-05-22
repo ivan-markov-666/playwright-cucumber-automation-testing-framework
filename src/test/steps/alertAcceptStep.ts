@@ -5,6 +5,6 @@ let pom: AlertAccept;
 
 defineStep(`Test the alertAccept dsl method`, async function () {
   pom = new AlertAccept(fixture.page, fixture.context);
-  pom.alertAccept();
+  await pom.alertAccept();
   fixture.logger.info('Test the alertAccept dsl method');
 });

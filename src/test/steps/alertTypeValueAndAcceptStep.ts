@@ -5,6 +5,6 @@ let pom: AlertTypeValueAndAccept;
 
 defineStep(`Test the alertTypeValueAndAccept dsl method`, async function () {
   pom = new AlertTypeValueAndAccept(fixture.page, fixture.context);
-  pom.alertTypeValueAndAccept();
+  await pom.alertTypeValueAndAccept();
   fixture.logger.info('Test the alertTypeValueAndAccept dsl method');
 });
