@@ -53,3 +53,11 @@ export function messages(text: string) {
     infoMessage(text);
   }
 }
+
+/**
+ * @description      This method is used to get the current unix time.
+ * @returns          Return the current unix time.
+ */
+export function getUnixTime() {
+  return Math.floor(Date.now() / 1000);
+}

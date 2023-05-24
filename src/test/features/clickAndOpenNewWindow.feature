@@ -1,6 +1,5 @@
-Feature: Click and open a new tab
+Feature: Test the clickAndOpenNewWindow dsl method example
 
-    Scenario: Click and open a new tab
-        Given Navigate to the browser-windows page
-        When Click on the element and open a new page
-        Then Print message for testing
+    Scenario: Test the clickAndOpenNewWindow dsl method
+        Given Test the clickAndOpenNewWindow dsl method
+        Then The user waits 5 seconds

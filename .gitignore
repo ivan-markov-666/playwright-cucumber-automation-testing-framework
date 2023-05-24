@@ -15,7 +15,7 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 /test-results/
 cucumber-report.html
 assets
-features
+/features/*.html
 
 @rerun.txt
 index.html

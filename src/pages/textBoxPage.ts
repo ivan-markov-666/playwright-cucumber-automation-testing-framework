@@ -20,7 +20,7 @@ export default class textBoxPage extends BasePage {
   }
 
   async navigateToForm() {
-    await this.base.goto(this.Data.url);
+    await this.base.navigateTo(this.Data.url);
   }
 
   async fillFullName(fullName: string) {

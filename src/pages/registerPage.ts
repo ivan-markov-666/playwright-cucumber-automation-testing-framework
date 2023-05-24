@@ -16,7 +16,7 @@ export default class RegisterPage extends BasePage {
   };
 
   async navigateToRegisterPage() {
-    await this.base.goto('https://bookcart.azurewebsites.net/register');
+    await this.base.navigateTo('https://bookcart.azurewebsites.net/register');
   }
 
   async registerUser(

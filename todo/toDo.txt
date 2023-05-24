@@ -1,0 +1,11 @@
+We need to add DSL methods for iframe and nested iframe
+We need to add tests examples for screen size.
+We need to fix the "clickAndOpenNewTab" dls method.
+Need to test if the "clickWithHoldingKeyboardKey" dsl method is working as expected.
+Need to fix the "downloadFile" dsl method.
+Need to check if the "clickWithHoldingKeyboardKey" dsl method is acutally working!
+Need to add mechanism to FAIL the test when step definition is missing.
+Add tpye to the method variables. Change anywhere where we use type 'any' with declared type.
+Need to make validation if the user provide locator with few elements.
+Need to find a way to use dsl methods with iFrame and Nested iFrame.
+Need to add nested iFrame dsl method.

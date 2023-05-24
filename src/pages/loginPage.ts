@@ -1,10 +1,10 @@
-import { expect, Page } from '@playwright/test';
+import { expect, Page, BrowserContext } from '@playwright/test';
 import Pom from '../helper/methods/dsl';
 
 export default class LoginPage {
   private base: Pom;
-  constructor(private page: Page) {
-    this.base = new Pom(page);
+  constructor(private page: Page, private context: BrowserContext) {
+    this.base = new Pom(page, context);
   }
 
   private Elements = {
@@ -15,7 +15,7 @@ export default class LoginPage {
   };
 
   async navigateToLoginPage() {
-    await this.base.goto('/login');
+    await this.base.navigateTo('/login');
     await expect(this.page).toHaveTitle('BookCart');
   }
   async enterUserName(user: string) {

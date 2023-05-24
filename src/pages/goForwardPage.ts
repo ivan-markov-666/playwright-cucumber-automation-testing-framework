@@ -1,5 +1,5 @@
 /**
- * @description Wrapper class for navigating to the forward page.
+ * @description This file contains example for going back to the previous page.
  */
 
 // Import required packages.
@@ -10,6 +10,6 @@ export default class goForward extends BasePage {
   // Define the constructor for the wrapper class.
   async goForward() {
     // Go forward.
-    await this.base.goForward();
+    await this.base.goForward(`https://demoqa.com/radio-button`);
   }
 }
