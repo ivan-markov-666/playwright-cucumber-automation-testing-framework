@@ -8,7 +8,7 @@ let goBack: GoBack;
 defineStep(`Test the goForward dsl method`, async function () {
   pom = new goForward(fixture.page, fixture.context);
   goBack = new GoBack(fixture.page, fixture.context);
+  fixture.logger.info('Test the goForward dsl method');
   await goBack.goBack();
   await pom.goForward();
-  fixture.logger.info('Test the goForward dsl method');
 });

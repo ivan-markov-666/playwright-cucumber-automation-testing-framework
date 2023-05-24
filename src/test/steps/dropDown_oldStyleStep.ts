@@ -5,6 +5,6 @@ let pom: DropDown_oldStyle;
 
 defineStep(`Test the dropDown_oldStyle dsl method`, async function () {
   pom = new DropDown_oldStyle(fixture.page, fixture.context);
-  await pom.dropDown_oldStyle();
   fixture.logger.info('Test the dropDown_oldStyle dsl method');
+  await pom.dropDown_oldStyle();
 });

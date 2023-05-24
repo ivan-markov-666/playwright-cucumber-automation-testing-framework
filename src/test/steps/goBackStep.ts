@@ -5,6 +5,6 @@ let pom: GoBack;
 
 defineStep(`Test the goBack dsl method`, async function () {
   pom = new GoBack(fixture.page, fixture.context);
-  await pom.goBack();
   fixture.logger.info('Test the goBack dsl method');
+  await pom.goBack();
 });

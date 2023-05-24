@@ -17,7 +17,7 @@ let context: BrowserContext;
 
 // Define the hooks for the cucumber framework.
 BeforeAll(async function () {
-  // Invoke the browser.
+  // Get the environment variables.
   getEnv();
   // Invoke the browser.
   browser = await invokeBrowser();

@@ -5,6 +5,6 @@ let pom: DownloadFile;
 
 defineStep(`Test the downloadFile dsl method`, async function () {
   pom = new DownloadFile(fixture.page, fixture.context);
-  await pom.downloadFile();
   fixture.logger.info('Test the downloadFile dsl method');
+  await pom.downloadFile();
 });

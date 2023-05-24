@@ -5,6 +5,6 @@ let pom: RightClick;
 
 defineStep(`Test the rightClick dsl method`, async function () {
   pom = new RightClick(fixture.page, fixture.context);
-  await pom.rightClick();
   fixture.logger.info('Test the rightClick dsl method');
+  await pom.rightClick();
 });

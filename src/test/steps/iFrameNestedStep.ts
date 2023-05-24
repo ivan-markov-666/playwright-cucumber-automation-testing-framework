@@ -5,6 +5,6 @@ let pom: IFrameNested;
 
 defineStep(`Test the iFrameNested dsl method`, async function () {
   pom = new IFrameNested(fixture.page, fixture.context);
-  await pom.iFrameNested();
   fixture.logger.info('Test the iFrameNested dsl method');
+  await pom.iFrameNested();
 });

@@ -14,8 +14,8 @@ let pom: ScreenSizePage;
 defineStep('Set the screen to FullHD', async function () {
   // Initialize the page object.
   pom = new ScreenSizePage(fixture.page, fixture.context);
-  // Change the screen size.
-  await pom.fullHD();
   // Log the message.
   fixture.logger.info('I set the screen size to FullHD.');
+  // Change the screen size.
+  await pom.fullHD();
 });

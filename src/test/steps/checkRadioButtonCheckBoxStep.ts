@@ -5,6 +5,6 @@ let pom: CheckRadioButtonCheckBox;
 
 defineStep(`Test the checkRadioButtonCheckBox dsl method`, async function () {
   pom = new CheckRadioButtonCheckBox(fixture.page, fixture.context);
-  await pom.checkRadioButtonCheckBox();
   fixture.logger.info('Test the checkRadioButtonCheckBox dsl method');
+  await pom.checkRadioButtonCheckBox();
 });

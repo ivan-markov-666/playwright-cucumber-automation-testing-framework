@@ -5,6 +5,6 @@ let pom: UploadFile;
 
 defineStep(`Test the uploadFile dsl method`, async function () {
   pom = new UploadFile(fixture.page, fixture.context);
-  await pom.uploadFile();
   fixture.logger.info('Test the uploadFile dsl method');
+  await pom.uploadFile();
 });

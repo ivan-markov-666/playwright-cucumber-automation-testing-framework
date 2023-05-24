@@ -7,7 +7,7 @@ defineStep(
   `Test the clickWithHoldingKeyboardKey dsl method`,
   async function () {
     pom = new ClickWithHoldingKeyboardKey(fixture.page, fixture.context);
-    await pom.clickWithHoldingKeyboardKey();
     fixture.logger.info('Test the clickWithHoldingKeyboardKey dsl method');
+    await pom.clickWithHoldingKeyboardKey();
   },
 );

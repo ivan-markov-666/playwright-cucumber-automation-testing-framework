@@ -17,5 +17,12 @@ export default class SendKeysMultySelect extends BasePage {
       `Maths`,
       `#react-select-2-option-0`,
     );
+
+    await this.base.sendKeysMultySelect(
+      `#subjectsInput`,
+      `Physics`,
+      `#react-select-2-option-0`,
+      `(//*[@*='subjectsContainer']/div/div/div/div)[3]`,
+    );
   }
 }

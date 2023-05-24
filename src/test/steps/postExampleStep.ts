@@ -4,6 +4,7 @@ import { fixture } from '../../hooks/pageFixture';
 import { getUnixTime } from '../../helper/methods/other';
 
 defineStep(`POST example`, async function () {
+  fixture.logger.info('Test the alertAccept dsl method');
   const unixTime = getUnixTime();
 
   const response = await fetch('https://demoqa.com/Account/v1/User', {
@@ -20,6 +21,4 @@ defineStep(`POST example`, async function () {
 
   const data = await response.json();
   console.log(data);
-
-  fixture.logger.info('Test the alertAccept dsl method');
 });

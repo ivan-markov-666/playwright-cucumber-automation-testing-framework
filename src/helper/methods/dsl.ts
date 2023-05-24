@@ -4,7 +4,7 @@
  */
 
 // Import required packages.
-import { Page, BrowserContext, expect, ElementHandle } from '@playwright/test';
+import { Page, BrowserContext } from '@playwright/test';
 import Assert from './assert';
 import {
   catchErrorMessage,
@@ -477,13 +477,17 @@ export default class Dsl {
    */
   async sendKeys(locatorOrElement: any, text: string) {
     try {
-      let element: any;
-      if (typeof locatorOrElement === 'string') {
-        element = await this.page.$(locatorOrElement);
-      } else {
-        element = await locatorOrElement.elementHandle();
-      }
+      // Call this method to verify that the element is present and ready for usage.
+      const element = await this.element(
+        locatorOrElement,
+        elementTimeOut.timeout,
+      );
+      // Send Control+A to the element. This will work for Windows and Linux. We are using this to select all containing text inside inspected input text element.
+      await this.page.keyboard.press('Control+A');
+      // Send Meta+A to the element. This will work for macOS. We are using this to select all containing text inside inspected input text element.
+      await this.page.keyboard.press('Meta+A');
 
+      // Fill the input text element with the provided text.
       await element.fill(text);
 
       // Make a verification. Verify that the text that was send is the same like the text in the input text element.
@@ -500,70 +504,26 @@ export default class Dsl {
   }
 
   /**
-   * @description                       This method is used to send text to an multy select input text element and verify that the element contains the sent text.
-   * @param locatorOrElement            Provide the locator or the element that will be used to send text.
-   * @param text                        Provide the text that will be sent to the input text element.
-   * @param loctorOrElementVerificator  Provide the locator or the element that will be used to verify that the element contains the sent text.
-   * @usage                             await dsl.sendKeysMultySelect({string}, {string}, {string});
-   * @example                           await dsl.sendKeysMultySelect('input', 'text', 'input');
+   * @description                             This method is used to send text to an multy select input text element and verify that the element contains the sent text.
+   * @param locatorOrElement                  Provide the locator or the element that will be used to send text.
+   * @param text                              Provide the text that will be sent to the input text element.
+   * @param loctorOrElementVerificator        Provide the locator or the element that will be used for click. This is used to select the value from the suggestion list.
+   * @param verificatorTextLocatorOrElement   Optional. Provide the locator or the element that will be used to verify that the element contains the sent text.
+   * @usage                                   await dsl.sendKeysMultySelect({string}, {string}, {string}, {string});
+   * @example                                 await dsl.sendKeysMultySelect('#input', 'text-value', '#button-or-drop-downlist-locator', '#value-locator');
    */
   async sendKeysMultySelect(
     locatorOrElement: any,
     text: string,
-    loctorOrElementVerificator?: any,
+    loctorOrElementVerificator: any,
+    verificatorTextLocatorOrElement?: string,
   ) {
     try {
-      await this.page.type(locatorOrElement, text);
-
-      // console.log(`--------------------1`);
-      // // Call this method, to verify that the element is present and it is ready for usage.
-      // const element = await this.element(
-      //   await locatorOrElement,
-      //   elementTimeOut.timeout,
-      // );
-      // // Send Ctrl+A to the element. This will work for Windows and Linux. We are using this to select all containing text inside inspected input text element.
-      // console.log(`--------------------2`);
-      // await this.click(await element);
-      // await this.page.keyboard.press('Control+A');
-      // // Send Meta+A to the element. This will work for macOS. We are using this to select all containing text inside inspected input text element.
-      // console.log(`--------------------3`);
-      // await this.page.keyboard.press('Meta+A');
-      // console.log(`--------------------4`);
-      // // Fill the element with text.
-      // await element.fill(text);
-      // console.log(`--------------------5`);
-      // // Press the "Enter" key of the keyboard.
-      // await this.page.keyboard.press('Enter');
-      // console.log(`--------------------6`);
-      // // Verify that the input text element contains the sent text data.
-      // // If the element we use is the same as the element, that will verify the operation was compleated correctly. Or if we don't provide a verification element - because it is the same as a used element.
-      // if (
-      //   (await element) == (await loctorOrElementVerificator) ||
-      //   (await loctorOrElementVerificator) == null
-      // ) {
-      //   console.log(`--------------------7`);
-      //   const verificateValueIsCorrect: string = await (
-      //     await element.allTextContents()
-      //   )[0];
-      //   console.log(`--------------------8`);
-      //   await this.assert.assertTextInTheInputField(
-      //     verificateValueIsCorrect,
-      //     text,
-      //   );
-      // }
-      // // If we provide different element for verificaiton.
-      // else {
-      //   console.log(`--------------------9`);
-      //   const verificateValueIsCorrect: string = await (
-      //     await loctorOrElementVerificator.allTextContents()
-      //   )[0];
-      //   console.log(`--------------------10`);
-      //   await this.assert.assertTextInTheInputField(
-      //     verificateValueIsCorrect,
-      //     text,
-      //   );
-      // }
-      // console.log(`--------------------11`);
+      await this.sendKeys(locatorOrElement, text);
+      await this.click(loctorOrElementVerificator);
+      if (verificatorTextLocatorOrElement != null) {
+        await this.getText(verificatorTextLocatorOrElement, text);
+      }
       // Log the message.
       messages(
         `The automated test fill with text inside the multi-select element with the value: '${text}'.`,
@@ -1135,7 +1095,7 @@ export default class Dsl {
     }
   }
 
-  async iFrameNested(parentIframeLocator: string) {
+  async iFrameNested() {
     try {
       // Log the message.
       messages(`The automation successfully switched to neasted iFrame.`);

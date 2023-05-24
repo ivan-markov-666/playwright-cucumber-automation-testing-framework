@@ -12,6 +12,6 @@ export default class UploadFile extends BasePage {
     // Go to the page.
     await this.base.navigateTo(`https://demoqa.com/upload-download`);
     // Check the checkbox.
-    await this.base.uploadFile(`#uploadFile`, `upload\test-image.jpg`);
+    await this.base.uploadFile(`#uploadFile`, `upload/test-image.jpg`);
   }
 }

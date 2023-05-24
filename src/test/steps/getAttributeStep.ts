@@ -5,6 +5,6 @@ let pom: GetAttribute;
 
 defineStep(`Test the getAttribute dsl method`, async function () {
   pom = new GetAttribute(fixture.page, fixture.context);
-  await pom.getAttribute();
   fixture.logger.info('Test the getAttribute dsl method');
+  await pom.getAttribute();
 });
