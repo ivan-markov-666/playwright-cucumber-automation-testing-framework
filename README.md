@@ -41,7 +41,7 @@ You can customize the framework by modifying the following files:
 ## Contributing
 To contribute to the project, please follow these steps:
 1. Fork the repository.
-2. Create a new branch for your feature or bugfix.
+2. Create a new branch for your feature or bug fix.
 3. Make your changes.
 4. Commit and push your changes to the new branch.
 5. Create a pull request to merge your changes into the main branch.
